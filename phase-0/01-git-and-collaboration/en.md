@@ -175,11 +175,7 @@ git merge origin/main
 Git marks the file like this:
 
 ```python
-<<<<<<< HEAD
-MODEL_NAME = "gpt-4o"            # your version (current branch)
-=======
 MODEL_NAME = "claude-sonnet"     # incoming version (the branch being merged in)
->>>>>>> origin/main
 ```
 
 ### Steps
