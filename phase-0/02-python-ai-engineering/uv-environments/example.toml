@@ -1,0 +1,41 @@
+# Annotated example. Copy to a new project as `pyproject.toml`.
+# In practice, `uv init` creates the [project] table and `uv add` edits the lists below.
+
+[project]
+name = "my-ai-app"
+version = "0.1.0"
+description = "Short description of what this project does"
+readme = "README.md"
+requires-python = ">=3.12"          # the Python versions this project supports
+
+# Runtime dependencies: broad, human-chosen ranges (uv.lock pins the exact versions)
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "python-dotenv>=1.0",
+]
+
+# Optional extras for users of your package: `pip install my-ai-app[plot]`
+[project.optional-dependencies]
+plot = ["matplotlib>=3.9"]
+
+# Dev-only tools (not installed for end users). Added with: uv add --dev <pkg>
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+    "mypy>=1.11",
+]
+
+# ---- Tool configuration lives here too (one file for everything) ----
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
